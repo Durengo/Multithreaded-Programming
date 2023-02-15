@@ -2,6 +2,9 @@
 using System;
 using System.Threading;
 
+using durlibcsharp;
+using DurlibMathDefinition;
+using source.Math.Matrix;
 namespace MultithreadedProgramming;
 class Program
 {
@@ -32,19 +35,22 @@ class Program
     }
     static void Main(string[] args)
     {
-        Console.WriteLine($"Hello, World!");
-        ThreadStart th = new ThreadStart(ThreadStarter);
-        Console.WriteLine("Seperating threads!");
+        SquareMatrix mat = new SquareMatrix(new float[]{1.3f, 2.2f, 5.1f, 3.5f}, new float[]{0.5f, 1.5f, 3.0f, 1.7f});
+        //mat.Print();
+        mat.PrintSquare();
+        // Console.WriteLine($"Hello, World!");
+        // ThreadStart th = new ThreadStart(ThreadStarter);
+        // Console.WriteLine("Seperating threads!");
 
-        Console.WriteLine("Activating Thread Process");
-        Thread childTh = new Thread(th);
-        childTh.Start();
-        Console.WriteLine("End Of Thread Activation Process");
+        // Console.WriteLine("Activating Thread Process");
+        // Thread childTh = new Thread(th);
+        // childTh.Start();
+        // Console.WriteLine("End Of Thread Activation Process");
 
-        Thread.Sleep(2000);
+        // Thread.Sleep(2000);
 
-        Console.WriteLine("Abortion will happen!");
-        childTh.Interrupt();
+        // Console.WriteLine("Abortion will happen!");
+        // childTh.Interrupt();
 
         Console.ReadKey();
     }
