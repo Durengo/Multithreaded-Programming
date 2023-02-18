@@ -1,2 +1,10 @@
 /bin
 /obj
+/.vs
+/Tests/MatrixUnitTest/obj
+/Tests/MatrixUnitTest/bin
+/Main/packages
+/Main/obj
+/Main/bin/Debug/net7.0
+/Main/.vscode
+/Main/.vs

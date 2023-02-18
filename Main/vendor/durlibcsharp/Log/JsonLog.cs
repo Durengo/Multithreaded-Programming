@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
-namespace durlibcsharp
+namespace DurlibCS.Log
 {
     using System.Text.Json;
     using System.Text.Json.Serialization;
@@ -12,6 +8,8 @@ namespace durlibcsharp
     public class JsonLog : Loggable
     {
         //private File JsonFile = null;
+        private bool Line = true;
+        //private bool Formatting = true;
         private string FileName = "";
         public Exception EXCPT = null;
         private JsonSerializerOptions JsonOptions = new JsonSerializerOptions
@@ -48,7 +46,15 @@ namespace durlibcsharp
             var file = File.Open(FileName, FileMode.Append);
             using (var stream = new StreamWriter(file))
             {
-                stream.Write(JsonSerializer.Serialize(text, JsonOptions));
+                if (!Line)
+                {
+                    stream.Write(JsonSerializer.Serialize(text, JsonOptions));
+                }
+                else
+                {
+                    stream.WriteLine(JsonSerializer.Serialize(text, JsonOptions));
+                }
+                
             }
             //Console.WriteLine($"{text}");
             file.Close();
@@ -56,7 +62,12 @@ namespace durlibcsharp
 
         public void Log<T>(LogErrorLevel errorLevel, T text) { }
 
-        public void LogL<T>(T text) { }
+        public void LogL<T>(T text)
+        {
+            //Line = true;
+            Log(text);
+            //Line = false;
+        }
         public void LogL<T>(LogErrorLevel errorLevel, T text) { }
 
         public void SetEncoding(Encoding type) { }

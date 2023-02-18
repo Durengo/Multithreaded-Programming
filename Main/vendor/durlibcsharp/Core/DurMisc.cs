@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace durlibcsharp
+﻿namespace DurlibCS.Log
 {
-    public static class durlibsharplog
+    public static class DurLog
     {
         private static Logger log = new Logger(new ConsoleLog());
         public static void Log<T>(T text)
@@ -26,6 +20,10 @@ namespace durlibcsharp
             log.LogL(errorLevel, text);
         }
     }
+}
+namespace DurlibCS.Input
+{
+    using DurlibCS.Log;
     public class DurMisc
     {
         public static void AnyKeyExit()

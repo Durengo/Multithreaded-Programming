@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
-namespace durlibcsharp
+namespace DurlibCS.Log
 {
     public class Logger
     {
         private Loggable LogType;
+
 
         public Logger(Loggable logType)
         {

@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace durlibcsharp
+using DurlibCS.Log;
+namespace DurlibCS.Input
 {
-    //using OOP5.source.Log;
-
     public class InputValidation
     {
         static Logger InputLogger = new Logger(new ConsoleLog());
