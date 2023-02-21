@@ -1,6 +1,6 @@
 ﻿using DurlibCS.Log;
 using DurlibCS.Math;
-// using DurlibCS.Input;
+using DurlibCS.Input;
 // using DurlibCS.Parse;
 
 /*
@@ -83,7 +83,7 @@ class Program
         //GenerateMatricesInFile();
         //parse();
 
-        Console.ReadKey();
+        DurlibCS.Input.DurMisc.AnyKeyExit();
     }
     /*public static void GenerateMatricesInFile()
     {
