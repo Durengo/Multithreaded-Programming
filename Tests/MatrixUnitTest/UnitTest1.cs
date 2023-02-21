@@ -1,10 +1,32 @@
 using DurlibCS.Math;
 using DurlibCS.Log;
+using System;
 namespace MatrixUnitTest
 {
     [TestClass]
     public class MatrixMultithreadingTest
     {
+        [TestMethod]
+        public void MULTITHREADED_MULTIPLICATION_TIME()
+        {
+            Random rnd = new Random();
+            int n = 100;
+            int m = 100;
+            int k = 100;
+
+            Matrix A = new Matrix(n, m).RandomValues();
+            Matrix B = new Matrix(m, k).RandomValues();
+
+            //DurLog.LogL(LogErrorLevel.INFO, "MATRIX A:");
+            //A.Print();
+            //DurLog.LogL(LogErrorLevel.INFO, "MATRIX B:");
+            //B.Print();
+            //DurLog.LogL(LogErrorLevel.INFO, "A * B:");
+            Matrix C = A * B;
+            //C.Print();
+
+            Assert.IsTrue(true);
+        }
         [TestMethod]
         public void MULTITHREADED_MULTIPLICATION()
         {

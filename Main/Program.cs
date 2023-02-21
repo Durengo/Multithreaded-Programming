@@ -1,71 +1,17 @@
-﻿using System;
-using System.Threading;
-
-using DurlibCS.Log;
+﻿using DurlibCS.Log;
 using DurlibCS.Math;
-using DurlibCS.Input;
-using DurlibCS.Parse;
+// using DurlibCS.Input;
+// using DurlibCS.Parse;
 
+/*
+This program is a simple example of how to use multithreading in C#.
+This program generates random matrices and performs a few operations on them.
+The operations are: addition, subtraction, multiplication.
+*/
 namespace MultithreadedProgramming;
 class Program
 {
-    public static void GenerateMatricesInFile()
-    {
-        int n, m;
-        Random rnd = new Random();
-        {
-            rnd.Next(1, 10);
-            n = rnd.Next(1, 10);
-            m = rnd.Next(1, 10);
 
-            Matrix A = new Matrix(n, m).RandomValues();
-            Logger MatA = new Logger(new SimpleTextFileLog("MatrixA.txt", false, true));
-            //Logger MatA = new Logger(new JsonLog("MatrixA.json"));
-            MatA.LogL($"{A.Row},{A.Column}");
-            MatA.Log(A);
-        }
-        {
-            rnd.Next(1, 10);
-            n = rnd.Next(1, 10);
-            m = rnd.Next(1, 10);
-
-            Matrix B = new Matrix(n, m).RandomValues();
-            Logger MatB = new Logger(new SimpleTextFileLog("MatrixB.txt", false, true));
-            //Logger MatB = new Logger(new JsonLog("MatrixB.json"));
-            MatB.LogL($"{B.Row},{B.Column}");
-            MatB.Log(B);
-        }
-    }
-    public static void parse()
-    {
-        Parser matA = new Parser(new ParseTxt("MatrixA.txt"));
-        matA.Parse("\n");
-        //DurLog.LogL(matA.ParsedOutput[0][0].Split(",")[1]);
-        string[] rowColumns = matA.ParsedOutput[0][0].Split(",");
-        int rows = InputValidation.GIBI(rowColumns[0]);
-        int columns = InputValidation.GIBI(rowColumns[1]);
-        DurLog.LogL($"rows: {rows}, columns: {columns}");
-        Matrix MatA = new Matrix(rows, columns);
-        // MatA.Row = rows;
-        // MatA.Column = columns;
-        for (int i = 0; i < MatA.Row; i++)
-        {
-            for (int j = 0; j < MatA.Column; j++)
-            {
-                MatA[i, j] = InputValidation.GIBD(matA.ParsedOutput[i + 1][0].Split(" ")[j]);
-            }
-        }
-        MatA.Print();
-        // foreach (var text in matA.ParsedOutput)
-        // {
-        //         // DurLog.LogL(LogErrorLevel.INFO, text);
-
-        //     foreach(var item in text)
-        //     {
-        //         DurLog.LogL(LogErrorLevel.INFO, item);
-        //     }
-        // }
-    }
     static void Main(string[] args)
     {
         {
@@ -134,9 +80,66 @@ class Program
             E.Print();
         }
 
-        // GenerateMatricesInFile();
-        // parse();
+        //GenerateMatricesInFile();
+        //parse();
 
         Console.ReadKey();
     }
+    /*public static void GenerateMatricesInFile()
+    {
+        int n, m;
+        Random rnd = new Random();
+        {
+            rnd.Next(1, 10);
+            n = rnd.Next(1, 10);
+            m = rnd.Next(1, 10);
+
+            Matrix A = new Matrix(n, m).RandomValues();
+            Logger MatA = new Logger(new SimpleTextFileLog("MatrixA.txt", false, true));
+            //Logger MatA = new Logger(new JsonLog("MatrixA.json"));
+            MatA.LogL($"{A.Row},{A.Column}");
+            MatA.Log(A);
+        }
+        {
+            rnd.Next(1, 10);
+            n = rnd.Next(1, 10);
+            m = rnd.Next(1, 10);
+
+            Matrix B = new Matrix(n, m).RandomValues();
+            Logger MatB = new Logger(new SimpleTextFileLog("MatrixB.txt", false, true));
+            //Logger MatB = new Logger(new JsonLog("MatrixB.json"));
+            MatB.LogL($"{B.Row},{B.Column}");
+            MatB.Log(B);
+        }
+    }
+    public static void parse()
+    {
+        Parser matA = new Parser(new ParseTxt("MatrixA.txt"));
+        matA.Parse("\n");
+        //DurLog.LogL(matA.ParsedOutput[0][0].Split(",")[1]);
+        string[] rowColumns = matA.ParsedOutput[0][0].Split(",");
+        int rows = InputValidation.GIBI(rowColumns[0]);
+        int columns = InputValidation.GIBI(rowColumns[1]);
+        DurLog.LogL($"rows: {rows}, columns: {columns}");
+        Matrix MatA = new Matrix(rows, columns);
+        // MatA.Row = rows;
+        // MatA.Column = columns;
+        for (int i = 0; i < MatA.Row; i++)
+        {
+            for (int j = 0; j < MatA.Column; j++)
+            {
+                MatA[i, j] = InputValidation.GIBD(matA.ParsedOutput[i + 1][0].Split(" ")[j]);
+            }
+        }
+        MatA.Print();
+        // foreach (var text in matA.ParsedOutput)
+        // {
+        //         // DurLog.LogL(LogErrorLevel.INFO, text);
+
+        //     foreach(var item in text)
+        //     {
+        //         DurLog.LogL(LogErrorLevel.INFO, item);
+        //     }
+        // }
+    }*/
 }

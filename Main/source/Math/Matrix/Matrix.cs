@@ -1,5 +1,10 @@
 using DurlibCS.Log;
 
+/*
+This class is a simple matrix class.
+It can perform basic operations on matrices.
+It can also perform multithreaded operations on matrices (Multiplication, Addition, Subtraction, Equality, Inequality).
+*/
 namespace DurlibCS.Math
 {
     public struct Matrix
@@ -411,7 +416,8 @@ namespace DurlibCS.Math
 
             for (int k = 0; k < x.Length; k++)
             {
-                result[i, j] += x[k] * y[k];
+                //result[i, j] += x[k] * y[k];
+                result[i, j] = result[i, j] + (x[k] * y[k]);
             }
             mutex.ReleaseMutex();
             //DurLog.LogL("thread end?");
